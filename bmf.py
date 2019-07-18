@@ -18,8 +18,16 @@ class Bmf(unittest.TestCase):
     def test_ratealert(self):
 
         required_exchange_rate = 77.3000 # Setting the Reference Exchange Rate
-        required_currency = 'Euro'       # # Setting the Reference Exchange Currency
+        required_currency = 'Euro'       # Setting the Reference Exchange Currency
+        required_city = 'Bangalore'      # Setting the Reference Exchange Location
         driver = self.driver
+
+        city = driver.find_element_by_xpath('//*[@id="select2-buysell-cityCode-container"]') # Selecting the City
+        city.click()
+        city_sel = driver.find_element_by_xpath('/html/body/span/span/span[1]/input') # City Text Box
+        city_sel.send_keys(required_city) # Location Input
+        city_sel.send_keys(Keys.ENTER)  # Location Selection
+        sleep(1)
         currency = driver.find_element_by_xpath('//*[@id="buySellForm"]/div[3]/div/div[2]/span/span[1]/span') #Foreign Currency Field
         currency.click()
         currency_sel = driver.find_element_by_xpath('/html/body/span/span/span[1]/input') # Foreign Currency Text box
