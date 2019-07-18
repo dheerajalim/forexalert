@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from time import sleep
+import datetime
 import unittest
 from playsound import playsound
 
@@ -27,7 +28,7 @@ class Bmf(unittest.TestCase):
         sleep(1)
         while True:
             rate_value = driver.find_element_by_xpath('//*[@id="buySellForm"]/div[5]/div/span[1]/span/span').text
-            print(rate_value)
+            print(rate_value +"     "+str(datetime.datetime.now()))
             if float(rate_value) < required_exchange_rate:
                 playsound('test_sound1.mp3')
             sleep(16)
