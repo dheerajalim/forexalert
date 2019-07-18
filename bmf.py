@@ -11,27 +11,27 @@ class Bmf(unittest.TestCase):
         # cls.driver = webdriver.PhantomJS(executable_path='C:\\Development\\phantomjs\\bin\\phantomjs') # or add to your PATH
         cls.driver = webdriver.Chrome(executable_path='C:\\Users\\dheeraja1\\PycharmProjects\\selenium\\chromedriver.exe') # or add to your PATH
         # driver.set_window_size(1024, 768) # optional
-        cls.driver.maximize_window()
-        cls.driver.implicitly_wait(5)
+        cls.driver.maximize_window()  # Maximizing the window size
+        cls.driver.implicitly_wait(5) # dding a implicit wait of 5 seconds
         cls.driver.get('https://www.bookmyforex.com/')
 
     def test_ratealert(self):
 
-        required_exchange_rate = 77.3000
-        required_currency = 'Euro'
+        required_exchange_rate = 77.3000 # Setting the Reference Exchange Rate
+        required_currency = 'Euro'       # # Setting the Reference Exchange Currency
         driver = self.driver
-        currency = driver.find_element_by_xpath('//*[@id="buySellForm"]/div[3]/div/div[2]/span/span[1]/span')
+        currency = driver.find_element_by_xpath('//*[@id="buySellForm"]/div[3]/div/div[2]/span/span[1]/span') #Foreign Currency Field
         currency.click()
-        currency_sel = driver.find_element_by_xpath('/html/body/span/span/span[1]/input')
-        currency_sel.send_keys(required_currency)
-        currency_sel.send_keys(Keys.ENTER)
+        currency_sel = driver.find_element_by_xpath('/html/body/span/span/span[1]/input') # Foreign Currency Text box
+        currency_sel.send_keys(required_currency)  # Foreign Currency Input
+        currency_sel.send_keys(Keys.ENTER)   # Foreign Currency Selection
         sleep(1)
         while True:
-            rate_value = driver.find_element_by_xpath('//*[@id="buySellForm"]/div[5]/div/span[1]/span/span').text
-            print(rate_value +"     "+str(datetime.datetime.now()))
+            rate_value = driver.find_element_by_xpath('//*[@id="buySellForm"]/div[5]/div/span[1]/span/span').text  # Getting Current Rate
+            print(rate_value +"     "+str(datetime.datetime.now()))  # Printing the Update Exchange rate
             if float(rate_value) < required_exchange_rate:
-                playsound('test_sound1.mp3')
-            sleep(16)
+                playsound('test_sound1.mp3')   # If rate drops below specific value
+            sleep(16)  # Exchange Refresh Rate
 
 
 
