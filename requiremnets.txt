@@ -1,0 +1,8 @@
+Appium-Python-Client==0.11
+custom-text-test-runner==0.1.5
+enum34==1.1.6
+playsound==1.2.2
+selenium==3.141.0
+selenium-unittest==0.2.3
+table-printer==0.1.4
+urllib3==1.25.3
